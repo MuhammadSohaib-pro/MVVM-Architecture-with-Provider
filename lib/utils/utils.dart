@@ -28,11 +28,7 @@ class Utils {
         margin: const EdgeInsets.all(8.0),
         padding: const EdgeInsets.all(8.0),
         duration: const Duration(seconds: 3),
-        icon: const Icon(
-          Icons.error,
-          size: 28,
-          color: Colors.white,
-        ),
+        positionOffset: 20,
         borderRadius: BorderRadius.circular(5),
         forwardAnimationCurve: Curves.bounceIn,
         reverseAnimationCurve: Curves.bounceOut,

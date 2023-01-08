@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/res/Components/round_button.dart';
 import 'package:mvvm/utils/Routes/routes_name.dart';
 import 'package:mvvm/utils/utils.dart';
+import 'package:mvvm/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -59,17 +61,30 @@ class LoginScreenState extends State<LoginScreen> {
             },
           ),
           SizedBox(height: MediaQuery.of(context).size.height * .05),
-          RoundedButton(title: "Login", callBack: () {
-            if (_emailController.text.isEmpty) {
-              Utils.flushBarErrorMessage("Enter Email", context);
-            } else if (_passwordController.text.isEmpty) {
-              Utils.flushBarErrorMessage("Enter Password", context);
-            }else if (_passwordController.text.length<6){
-              Utils.flushBarErrorMessage("Password length is less than 6", context);
-            }else{
-              print("Login Succesfull");
-            }
-          }),
+          Consumer<AuthViewModel>(
+            builder: (context, value, child) {
+              return RoundedButton(
+                  title: "Login",
+                  isLoading: value.loading,
+                  callBack: () {
+                    if (_emailController.text.isEmpty) {
+                      Utils.flushBarErrorMessage("Enter Email", context);
+                    } else if (_passwordController.text.isEmpty) {
+                      Utils.flushBarErrorMessage("Enter Password", context);
+                    } else if (_passwordController.text.length < 6) {
+                      Utils.flushBarErrorMessage(
+                          "Password length is less than 6", context);
+                    } else {
+                      Map data = {
+                        "email": _emailController.text.toString(),
+                        "password": _passwordController.text.toString()
+                      };
+                      value.loginApi(context,data);
+                      print("Login Succesfull");
+                    }
+                  });
+            },
+          ),
         ],
       ),
     );
