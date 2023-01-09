@@ -58,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ? const Icon(Icons.visibility)
                           : const Icon(Icons.visibility_off),
                     )),
-                focusNode: emailFocusNode,
+                focusNode: passwordFocusNode,
               );
             },
           ),

@@ -56,7 +56,7 @@ class LoginScreenState extends State<LoginScreen> {
                           ? const Icon(Icons.visibility)
                           : const Icon(Icons.visibility_off),
                     )),
-                focusNode: emailFocusNode,
+                focusNode: passwordFocusNode,
               );
             },
           ),
