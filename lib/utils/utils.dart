@@ -29,6 +29,11 @@ class Utils {
         padding: const EdgeInsets.all(8.0),
         duration: const Duration(seconds: 3),
         positionOffset: 20,
+        icon: const Icon(
+          Icons.error,
+          size: 28,
+          color: Colors.white,
+        ),
         borderRadius: BorderRadius.circular(5),
         forwardAnimationCurve: Curves.bounceIn,
         reverseAnimationCurve: Curves.bounceOut,

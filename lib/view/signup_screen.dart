@@ -5,12 +5,14 @@ import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
+
 
 ValueNotifier<bool> _valueNotifier = ValueNotifier<bool>(true);
 TextEditingController _emailController = TextEditingController();
@@ -18,8 +20,8 @@ TextEditingController _passwordController = TextEditingController();
 FocusNode emailFocusNode = FocusNode();
 FocusNode passwordFocusNode = FocusNode();
 
-class LoginScreenState extends State<LoginScreen> {
-  @override
+class _SignUpScreenState extends State<SignUpScreen> {
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -64,7 +66,7 @@ class LoginScreenState extends State<LoginScreen> {
           Consumer<AuthViewModel>(
             builder: (context, value, child) {
               return RoundedButton(
-                  title: "Login",
+                  title: "Sign Up",
                   isLoading: value.loading,
                   callBack: () {
                     if (_emailController.text.isEmpty) {
@@ -80,17 +82,17 @@ class LoginScreenState extends State<LoginScreen> {
                         "password": _passwordController.text.toString()
                       };
                       value.loginApi(context, data);
-                      print("Login Succesfull");
+                      print("Signup Succesful");
                     }
                   });
             },
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, RoutesName.signUp);
+              Navigator.pushNamed(context, RoutesName.login);
             },
             child: const Text(
-              "Don't have an account? Sign Up",
+              "Already have an account? Login",
               style: TextStyle(
                 fontSize: 22,
               ),
