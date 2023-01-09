@@ -12,7 +12,7 @@ class SplashServices {
     getUserData()
         .then(
           (value) async {
-            if (value.token=='null' || value.token=='') {
+            if (value.token==null || value.token=='') {
               await Future.delayed(const Duration(seconds: 3));
               // ignore: use_build_context_synchronously
               Navigator.pushNamed(context, RoutesName.login);
