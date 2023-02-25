@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "email": _emailController.text.toString(),
                         "password": _passwordController.text.toString()
                       };
-                      value.loginApi(context, data);
+                      value.signUpApi(context, data);
                       print("Signup Succesful");
                     }
                   });
